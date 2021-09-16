@@ -19,17 +19,18 @@ chmod +x /usr/local/bin/docker-compose
 
 # installing azure cli
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
-az login --service-principal -u <APP-ID> -p <PASSWORD> --tenant <TENANT-ID>
+#az login --service-principal -u <APP-ID> -p <PASSWORD> --tenant <TENANT-ID>
+az login
 
 # add extention to az
 az extension add --name azure-iot
 
 # container registry login 
-az acr login --name <AZURE-CONTAINER-REGISTRY>
+az acr login --name tegfleettrackeracr
 
-# create iot device 
-az iot hub device-identity create -n tediothub -d tediotdevice --ee false
-az iot hub device-identity create -n tediothub -d tediotedgedevice --ee true
+# create iot device
+# az iot hub device-identity create -n tediothub -d tediotdevice --ee false
+# az iot hub device-identity create -n tediothub -d tediotedgedevice --ee true
 
 # create .env and copy content from env.temp
 true > .env && cp env.temp .env
